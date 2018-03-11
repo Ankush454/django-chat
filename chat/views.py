@@ -24,7 +24,6 @@ class MessageAPI(ListCreateAPIView):
     model = Messages
 
     def post(self, request):
-        print request.data
         serializer = self.get_serializer(data=request.data)
         if serializer.is_valid():
             msg = serializer.save()
