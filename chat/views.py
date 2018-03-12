@@ -27,7 +27,7 @@ class MessageAPI(ListCreateAPIView):
         serializer = self.get_serializer(data=request.data)
         if serializer.is_valid():
             msg = serializer.save()
-            return JsonResponse({"status": True}, status=200)
+            return JsonResponse({"status": True, "id"=msg.id}, status=200)
         else:
             return JsonResponse({"status": False}, status=400)
 
