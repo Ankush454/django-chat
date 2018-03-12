@@ -40,7 +40,7 @@ class MessageAPI(ListCreateAPIView):
     	crnt_pg = request.GET.get('crnt_pg',None)
 
     	if to_user and from_user:
-    		msg = Messages.objects.filter(Q(to_user=to_user, from_user=from_user)| Q(to_user=from_user, from_user=to_user)).order_by('-created').values('to_user','from_user','message','created')
+    		msg = Messages.objects.filter(Q(to_user=to_user, from_user=from_user)| Q(to_user=from_user, from_user=to_user)).order_by('-created').values('id','to_user','from_user','message','created')
     		total = msg.count()
     		if load_prev and crnt_pg:
     			msg = msg[crnt_pg:load_prev]
